@@ -13,6 +13,7 @@ const slice = createSlice({
   initialState,
   reducers: {
     increment: (state) => {
+      console.log("increment");
       state.value += 1;
     },
     decrement: (state) => {

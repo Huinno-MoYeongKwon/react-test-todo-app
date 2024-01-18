@@ -33,7 +33,15 @@ function App() {
           Learn React
         </a>
 
-        <button onClick={() => dispatch(increment())}> 즈응가</button>
+        <button
+          onClick={() =>
+            dispatch({
+              type: "counter/increment_async",
+            })
+          }
+        >
+          즈응가
+        </button>
         <button onClick={() => dispatch(decrement())}> 가암소</button>
       </header>
     </div>
