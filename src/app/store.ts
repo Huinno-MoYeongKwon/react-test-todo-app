@@ -1,22 +1,16 @@
 import counterReducer from "../features/counter/counterSlice";
 import createSagaMiddleware from "@redux-saga/core";
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import alertReducer from "../features/alert/alertDuck";
+
 import rootSaga from "../redux/sagas";
 
 const sagaMiddleware = createSagaMiddleware();
 
 const rootReducer = combineReducers({
   counter: counterReducer,
+  alert: alertReducer,
 });
-
-// const store = configureStore({
-//   reducer: {
-//     counter: counterReducer,
-//   },
-//   middleware: (getDefaultMiddleware) => {
-//     return getDefaultMiddleware().concat(sagaMiddleware);
-//   },
-// });
 
 export function setupStore(preloadedState?: Partial<RootState>) {
   return configureStore({

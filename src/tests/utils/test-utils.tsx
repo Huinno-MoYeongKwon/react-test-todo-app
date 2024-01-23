@@ -7,6 +7,7 @@ import { Provider } from "react-redux";
 import type { AppStore, RootState } from "../../app/store";
 // As a basic setup, import your same slice reducers
 import counterReducer from "../../features/counter/counterSlice";
+import alertReducer from "../../features/alert/alertDuck";
 
 import createSagaMiddleware from "@redux-saga/core";
 
@@ -26,7 +27,10 @@ export function renderWithProviders(
     preloadedState = {},
     // Automatically create a store instance if no store was passed in
     store = configureStore({
-      reducer: combineReducers({ counter: counterReducer }),
+      reducer: combineReducers({
+        counter: counterReducer,
+        alert: alertReducer,
+      }),
       preloadedState,
       middleware: (getDefaultMiddleware) => {
         return getDefaultMiddleware().concat(sagaMiddleware);

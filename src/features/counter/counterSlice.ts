@@ -17,6 +17,7 @@ const slice = createSlice({
       state.value += 1;
     },
     decrement: (state) => {
+      console.log("decrement");
       state.value -= 1;
     },
     incrementByAmount: (state, action: PayloadAction<number>) => {
