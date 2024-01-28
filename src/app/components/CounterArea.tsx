@@ -16,9 +16,9 @@ function CounterArea() {
           })
         }
       >
-        즈응가
+        증가
       </button>
-      <button onClick={() => dispatch(decrement())}> 가암소</button>
+      <button onClick={() => dispatch(decrement())}> 감소</button>
     </>
   );
 }

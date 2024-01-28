@@ -2,6 +2,7 @@ import counterReducer from "../features/counter/counterSlice";
 import createSagaMiddleware from "@redux-saga/core";
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import alertReducer from "../features/alert/alertDuck";
+import alertOldReducer from "../features/alertOld/alertOldDuck";
 
 import rootSaga from "../redux/sagas";
 
@@ -10,6 +11,7 @@ const sagaMiddleware = createSagaMiddleware();
 const rootReducer = combineReducers({
   counter: counterReducer,
   alert: alertReducer,
+  alertOld: alertOldReducer,
 });
 
 export function setupStore(preloadedState?: Partial<RootState>) {
@@ -28,4 +30,5 @@ sagaMiddleware.run(rootSaga);
 
 export type RootState = ReturnType<typeof rootReducer>;
 export type AppStore = ReturnType<typeof setupStore>;
+
 export type AppDispatch = AppStore["dispatch"];

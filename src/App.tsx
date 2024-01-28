@@ -1,85 +1,24 @@
 import logo from "./logo.svg";
 import "./App.css";
 
-import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  decrement,
-  increment,
-  incrementByAmount,
-  incrementAsync,
-  selectCount,
-} from "./features/counter/counterSlice";
+import { decrement, selectCount } from "./features/counter/counterSlice";
 
 import { display, dismiss, alertFlag } from "./features/alert/alertDuck";
 
 import Alert from "./app/components/Alert";
 
+import Download from "./app/components/Download";
+
 function App() {
   const count = useSelector(selectCount);
   const isAlertVisible = useSelector(alertFlag);
   const dispatch = useDispatch();
-  const [incrementAmount, setIncrementAmount] = useState(0);
 
   return (
     <div className="App">
-      <button
-        onClick={() => {
-          const fileLinks = [
-            "http://localhost:3000/test1.jpg",
-            "http://localhost:3000/test2.jpg",
-            "http://localhost:3000/test3.jpg",
-          ];
-
-          fileLinks.forEach((fileLink, index) => {
-            const link = document.createElement("a");
-            link.href = fileLink;
-            link.download = index + ".jpg";
-            link.style.display = "none";
-            document.body.appendChild(link);
-            link.click();
-
-            setTimeout(() => {
-              URL.revokeObjectURL(fileLink);
-              link.remove();
-            }, 1000);
-          });
-        }}
-      >
-        다운로드
-      </button>
-
-      <a
-        href="http://localhost:3000/test1.jpg"
-        download
-        target="_blank"
-        rel="noreferrer"
-      >
-        test 이미지1
-      </a>
-      <br></br>
-
-      <a
-        href="http://localhost:3000/test2.jpg"
-        download
-        target="_blank"
-        rel="noreferrer"
-      >
-        test 이미지2
-      </a>
-
-      <br></br>
-      <a
-        href="http://localhost:3000/test3.jpg"
-        download
-        target="_blank"
-        rel="noreferrer"
-      >
-        test 이미지1
-      </a>
-
-      {/* <header className="App-header"></header> */}
-      <h1>{count}</h1>
+      <Download />
+      <h1>현재 숫자: {count}</h1>
       <img src={logo} className="App-logo" alt="logo" />
       <p>
         Edit <code>src/App.tsx</code> and save to reload.
@@ -101,7 +40,7 @@ function App() {
           })
         }
       >
-        즈응가
+        증가
       </button>
       <button
         onClick={() =>
@@ -109,7 +48,7 @@ function App() {
           dispatch(decrement())
         }
       >
-        가암소
+        감소
       </button>
 
       <button
@@ -128,6 +67,7 @@ function App() {
       </button>
 
       <Alert message="안녕하세요" open={isAlertVisible}></Alert>
+      {count % 100 === 0 && <p>{count} 번 누르셨습니다.</p>}
     </div>
   );
 }
