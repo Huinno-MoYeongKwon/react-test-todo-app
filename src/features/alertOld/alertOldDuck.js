@@ -1,10 +1,6 @@
 // Action Type
-const DISPLAY = "alertOld/DISPLAY";
-const DISMISS = "alertOld/DISMISS";
-
-type AlertState = {
-  flag: boolean;
-};
+const DISPLAY = "alert/DISPLAY";
+const DISMISS = "alert/DISMISS";
 
 // Action Creator
 export const display = () => {
@@ -15,14 +11,12 @@ export const dismiss = () => {
 };
 
 // InitialState
-const initialState: AlertState = {
+const initialState = {
   flag: false,
 };
 
-type AlertAction = ReturnType<typeof display> | ReturnType<typeof dismiss>;
-
 // Reducer
-function alertReducer(state = initialState, action: AlertAction) {
+function alertOldReducer(state = initialState, action) {
   console.log("alertReducer", action);
   if (action.type === DISPLAY) {
     return { ...state, flag: true };
@@ -33,6 +27,6 @@ function alertReducer(state = initialState, action: AlertAction) {
   }
 }
 
-export const alertFlag = (state: { alert: AlertState }) => state.alert.flag;
+export const alertOldFlag = (state) => state.alert.flag;
 
-export default alertReducer;
+export default alertOldReducer;

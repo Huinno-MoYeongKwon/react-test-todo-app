@@ -8,6 +8,7 @@ import type { AppStore, RootState } from "../../app/store";
 // As a basic setup, import your same slice reducers
 import counterReducer from "../../features/counter/counterSlice";
 import alertReducer from "../../features/alert/alertDuck";
+import alertOldReducer from "../../features/alertOld/alertOldDuck";
 
 import createSagaMiddleware from "@redux-saga/core";
 
@@ -30,6 +31,7 @@ export function renderWithProviders(
       reducer: combineReducers({
         counter: counterReducer,
         alert: alertReducer,
+        alertOld: alertOldReducer,
       }),
       preloadedState,
       middleware: (getDefaultMiddleware) => {

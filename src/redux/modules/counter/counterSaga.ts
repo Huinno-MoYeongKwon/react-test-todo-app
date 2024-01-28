@@ -1,6 +1,5 @@
-import { call, put, takeEvery, takeLatest } from "redux-saga/effects";
+import { put, takeEvery } from "redux-saga/effects";
 
-// const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
 export const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
 
 function* prepareIncrement() {
